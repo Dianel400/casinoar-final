@@ -1,10 +1,12 @@
-function Home() {
+import React from "react";
+
+const Home = () => {
   return (
-    <main style={{ textAlign: "center", padding: "2rem" }}>
-      <h1>🎰 Bienvenido a CasinoAR</h1>
-      <p>Tu casino online ya está en marcha</p>
-    </main>
+    <div>
+      <h1>Bienvenido a CasinoAR 🎰</h1>
+      <p>Jugá, ganá y disfrutá desde cualquier lugar.</p>
+    </div>
   );
-}
+};
 
 export default Home;

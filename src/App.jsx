@@ -6,20 +6,33 @@ import {
   SignIn,
   SignUp,
   SignedIn,
-  SignedOut
+  SignedOut,
 } from "@clerk/clerk-react";
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
+// Página pública
 function PublicPage() {
   return <h1>Página pública de CasinoAR 🎰</h1>;
 }
 
+// Página privada
 function PrivatePage() {
   return <h1>¡Estás logueado y viendo contenido exclusivo de CasinoAR! 🔐</h1>;
 }
 
-function RoutesWithClerk() {
+// Página de juegos
+function GamesPage() {
+  return <h1>Acá van los juegos del casino 🎲</h1>;
+}
+
+// Página no encontrada
+function NotFoundPage() {
+  return <h1>404 - Página no encontrada 😢</h1>;
+}
+
+// Componente principal
+function AppRoutes() {
   const navigate = useNavigate();
 
   return (
@@ -28,6 +41,7 @@ function RoutesWithClerk() {
         <Route path="/" element={<PublicPage />} />
         <Route path="/sign-in/*" element={<SignIn routing="path" path="/sign-in" />} />
         <Route path="/sign-up/*" element={<SignUp routing="path" path="/sign-up" />} />
+        <Route path="/games" element={<GamesPage />} />
         <Route
           path="/private"
           element={
@@ -41,6 +55,7 @@ function RoutesWithClerk() {
             </>
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </ClerkProvider>
   );
@@ -49,10 +64,9 @@ function RoutesWithClerk() {
 function App() {
   return (
     <BrowserRouter>
-      <RoutesWithClerk />
+      <AppRoutes />
     </BrowserRouter>
   );
 }
 
 export default App;
-
